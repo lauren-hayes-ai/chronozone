@@ -20,7 +20,7 @@ export default function Home() {
         <div className="inline-block px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 text-sm mb-6 border border-amber-500/20">
           Now in public beta
         </div>
-        <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-amber-200 to-orange-300 bg-clip-text text-transparent">
+        <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
           Time Zone &<br />World Clock API
         </h1>
         <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-10">
@@ -83,7 +83,7 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <Link href="/dashboard" className={`block text-center py-2.5 rounded-lg font-medium transition ${t.highlight ? 'bg-amber-600 hover:bg-amber-500' : 'border border-gray-700 hover:border-gray-500'}`}>
+              <Link href="/dashboard" className={`block text-center py-2.5 rounded-lg font-medium transition ${t.highlight ? 'bg-amber-600 hover:bg-amber-500' : 'border border-gray-700 hover:border-gray-500 text-white'}`}>
                 {t.cta}
               </Link>
             </div>
