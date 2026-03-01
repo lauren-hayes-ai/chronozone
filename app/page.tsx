@@ -1,65 +1,105 @@
-import Image from "next/image";
+import Link from "next/link";
+
+const features = [
+  { title: "Any Timezone", desc: "Current time for 300+ IANA timezones worldwide.", icon: "🌐" },
+  { title: "DST Aware", desc: "Automatic daylight saving time detection and UTC offset.", icon: "🔄" },
+  { title: "Time Conversion", desc: "Convert datetime between any two timezones instantly.", icon: "⏱️" },
+  { title: "Simple Integration", desc: "RESTful JSON API with API key auth. Ship in minutes.", icon: "🔌" },
+];
+
+const tiers = [
+  { name: "Free", price: "$0", period: "/forever", features: ["50 requests/day", "1 API key", "Community support"], cta: "Get Started", highlight: false },
+  { name: "Starter", price: "$9", period: "/month", features: ["2,000 requests/day", "5 API keys", "Email support", "Conversion endpoint"], cta: "Start Trial", highlight: true },
+  { name: "Pro", price: "$29", period: "/month", features: ["Unlimited requests", "20 API keys", "Priority support", "SLA guarantee", "Batch queries"], cta: "Go Pro", highlight: false },
+];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main>
+      <section className="max-w-6xl mx-auto px-4 py-24 text-center">
+        <div className="inline-block px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 text-sm mb-6 border border-amber-500/20">
+          Now in public beta
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-amber-200 to-orange-300 bg-clip-text text-transparent">
+          Time Zone &<br />World Clock API
+        </h1>
+        <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-10">
+          Current time, DST info, and UTC offsets for any timezone. Built for scheduling apps, global SaaS, and agent orchestration.
+        </p>
+        <div className="flex gap-4 justify-center">
+          <Link href="/dashboard" className="bg-amber-600 hover:bg-amber-500 px-6 py-3 rounded-lg font-medium transition">
+            Get Started Free
+          </Link>
+          <Link href="/docs" className="border border-gray-700 hover:border-gray-500 px-6 py-3 rounded-lg font-medium transition">
+            View Docs →
+          </Link>
         </div>
-      </main>
-    </div>
+        <div className="mt-16 max-w-2xl mx-auto text-left bg-gray-900 rounded-xl border border-gray-800 p-6 overflow-x-auto">
+          <div className="text-sm text-gray-500 mb-2">Try it</div>
+          <pre className="text-sm"><code className="text-gray-300">{`curl -H "X-API-Key: cz_your_key_here" \\
+  https://chronozone.vercel.app/api/v1/time/America/New_York`}</code></pre>
+          <pre className="text-sm mt-4"><code className="text-amber-300">{`{
+  "data": {
+    "timezone": "America/New_York",
+    "datetime": "2026-02-28T20:47:00-05:00",
+    "utc_offset": "-05:00",
+    "dst": false,
+    "abbreviation": "EST",
+    "day_of_week": 6
+  },
+  "usage": { "remaining": 49, "limit": 50 }
+}`}</code></pre>
+        </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-4 py-20">
+        <h2 className="text-3xl font-bold text-center mb-12">Everything you need</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {features.map((f) => (
+            <div key={f.title} className="bg-gray-900 border border-gray-800 rounded-xl p-6 hover:border-amber-500/30 transition">
+              <div className="text-3xl mb-4">{f.icon}</div>
+              <h3 className="text-lg font-semibold mb-2">{f.title}</h3>
+              <p className="text-sm text-gray-400">{f.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="pricing" className="max-w-6xl mx-auto px-4 py-20">
+        <h2 className="text-3xl font-bold text-center mb-4">Simple, transparent pricing</h2>
+        <p className="text-gray-400 text-center mb-12">Start free, upgrade when you need more.</p>
+        <div className="grid md:grid-cols-3 gap-6">
+          {tiers.map((t) => (
+            <div key={t.name} className={`rounded-xl p-8 border ${t.highlight ? 'border-amber-500 bg-amber-500/5' : 'border-gray-800 bg-gray-900'}`}>
+              <h3 className="text-lg font-semibold mb-2">{t.name}</h3>
+              <div className="mb-6">
+                <span className="text-4xl font-bold">{t.price}</span>
+                <span className="text-gray-400">{t.period}</span>
+              </div>
+              <ul className="space-y-3 mb-8">
+                {t.features.map((f) => (
+                  <li key={f} className="flex items-center gap-2 text-sm text-gray-300">
+                    <span className="text-amber-400">✓</span> {f}
+                  </li>
+                ))}
+              </ul>
+              <Link href="/dashboard" className={`block text-center py-2.5 rounded-lg font-medium transition ${t.highlight ? 'bg-amber-600 hover:bg-amber-500' : 'border border-gray-700 hover:border-gray-500'}`}>
+                {t.cta}
+              </Link>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <footer className="border-t border-gray-800 mt-20">
+        <div className="max-w-6xl mx-auto px-4 py-8 flex justify-between items-center text-sm text-gray-500">
+          <span>© 2026 ChronoZone. All rights reserved.</span>
+          <div className="flex gap-6">
+            <Link href="/docs" className="hover:text-white transition">Docs</Link>
+            <Link href="/#pricing" className="hover:text-white transition">Pricing</Link>
+          </div>
+        </div>
+      </footer>
+    </main>
   );
 }
